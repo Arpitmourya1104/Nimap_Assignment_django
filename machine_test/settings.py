@@ -77,25 +77,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'machine_test.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # For MySQL
-        'NAME': 'machinetest',                  # Your database name
-        'USER': 'root',                # Your MySQL username
-        'PASSWORD': 'monti1262',            # Your MySQL password
-        'HOST': 'localhost',                    # Set to empty string for localhost
-        'PORT': '3306',                         # Default MySQL port
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'machinetest',                 
+        'USER': 'root',               
+        'PASSWORD': 'test@123',           
+        'HOST': 'localhost',                   
+        'PORT': '3306',                       
     }
 }
 
 
 
 
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -113,8 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -125,12 +119,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
