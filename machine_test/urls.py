@@ -1,10 +1,9 @@
-# machine_test/urls.py
+
 from django.contrib import admin
-from django.urls import path, include
-from django.shortcuts import redirect
+from django.urls import path,include
+from .views import home_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
-    path('', lambda request: redirect('api/')),  
+    path("home/", include("api.urls")),
 ]
