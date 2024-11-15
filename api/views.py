@@ -1,12 +1,13 @@
-# api/views.py
-from rest_framework import viewsets  
-from .models import Client, Project
-from .serializers import ClientSerializer, ProjectSerializer  
+from django.shortcuts import render,HttpResponse
+from rest_framework import viewsets
+from api.models import Company,Employee
+from api.serializers import CompanySerializer,EmployeeSErializer
+# Create your views here.
+class CompanyViewSEt(viewsets.ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class= CompanySerializer
 
-class ClientViewSet(viewsets.ModelViewSet):
-    queryset = Client.objects.all()
-    serializer_class = ClientSerializer
+class EmployeeViewSEt(viewsets.ModelViewSet):
+    queryset= Employee.objects.all()
+    serializer_class= EmployeeSErializer
 
-class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
