@@ -1,13 +1,16 @@
-# api/serializers.py
 from rest_framework import serializers
-from .models import Client, Project  
+from api.models import Company, Employee
+# create serializers here
 
-class ClientSerializer(serializers.ModelSerializer):
+class CompanySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Client
-        fields = '__all__'  
+        model=Company
+        fields="__all__"
 
-class ProjectSerializer(serializers.ModelSerializer):
+
+class EmployeeSErializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField()
+
     class Meta:
-        model = Project
-        fields = '__all__'  
+        model= Employee
+        fields = "__all__"
