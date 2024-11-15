@@ -1,22 +1,30 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 
-User = get_user_model() 
 
-class Client(models.Model):
-    client_name = models.CharField(max_length=255)
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="clients_created")
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.client_name
-
-class Project(models.Model):
-    project_name = models.CharField(max_length=255)
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="projects")
-    users = models.ManyToManyField(User, related_name="projects_assigned")
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="projects_created")
-    created_at = models.DateTimeField(auto_now_add=True)
+class Company(models.Model): 
+    company_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    location = models.CharField(max_length=50)
+    about = models.TextField()
+    type = models.CharField(max_length=100, choices=[
+        ('IT', 'IT'),
+        ('Non IT', 'Non IT'),
+        ('Mobile phones', 'Mobile phones')
+    ])
+    added_date = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.project_name
+        return self.name
+
+
+
+
+class Employee(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    phone = models.CharField(max_length=10)
+    about = models.TextField()
+    position = models.CharField(max_length=100 , choices=(('Manager', 'manager'),('Software developer', 'sd'),('Project leader','pl')))
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
